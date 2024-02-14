@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Beloved Summer</title>
+    <style>
+      h1 {
+        text-align: center;
+        font-size: 38px;
+        line-height: 48px;
+        border: 4px solid #ef5a5a;
+        border-radius: 4px;
+        margin: 15px 0;
+        font-weight: 900;
+        color: #ef5a5a;
+      }
+
+      body {
+        background: #ef5a5a;
+      }
+      img {
+        display: block;
+        margin: 15px auto;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+      .container {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #feffdf;
+        border-radius: 16px;
+      }
+      .btn-discover {
+        display: block;
+        margin: 30px auto;
+        color: white;
+        width: 90%;
+        border: none;
+        border-radius: 50px;
+        font-size: 24px;
+        font-family: "Cerebri Sans";
+        font-weight: bold;
+        background: #ef5a5a;
+        padding: 15px 20px;
+        transition: all 200ms ease-in-out;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+      }
+      .btn-discover:hover {
+        opacity: 0.9;
+        cursor: pointer;
+      }
+      .trailer {
+        display: block;
+        margin: 0 auto;
+      }
+      .footer {
+        text-align: center;
+        display: block;
+        font-size: 16px;
+        margin-top: 20px;
+        font-family: "PT Mono", monospace;
+      }
+      .link-color {
+        color: #ffa952;
+      }
+
+      .description {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 10px;
+      }
+      .middle {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Our Beloved Summer</h1>
+      <img class="land-img" src="./loved.jpg" alt="" />
+
+      <button class="btn-discover">👉See Trailer</button>
+      <p><small class="footer">Made with ❤️ by Mayte Souza</small></p>
+    </div>
+    <script>
+      let counter = 0;
+      function switchImgToVideo(videourl) {
+        // Get the image element
+
+        let imageElement = document.querySelector(".land-img");
+
+        // Create a video element
+
+        let videoElement = document.createElement("video");
+
+        // Set attributes for the video
+        videoElement.src = videourl;
+        videoElement.controls = true;
+        videoElement.autoplay = true;
+        videoElement.loop = true;
+        // videoElement.width = "640"; // Set width to 640 pixels
+        //videoElement.height = "360"; // Set height to 360 pixels
+
+        // Set css style and attributes for the video
+        videoElement.classList.add("trailer"); // Add a custom class
+        videoElement.id = "video";
+        videoElement.style.width = "80%"; // Set width to 50%
+        videoElement.style.height = "auto"; // Set hei
+
+        // Replace the image element with the video element
+        imageElement.parentNode.replaceChild(videoElement, imageElement);
+      }
+      let btnDiscover = document.querySelector(".btn-discover");
+      let title = document.querySelector(".title");
+      btnDiscover.addEventListener("click", () => {
+        if (counter == 0) {
+          title.textContent = "TRAILER";
+          btnDiscover.textContent = "BEST SOUNDTRACKS ";
+          switchImgToVideo("./Our beloved Summer Official Trailer Netflix.mp4");
+          counter++;
+        } else if (counter == 1) {
+          title.textContent = "TOP 1";
+          let video = document.querySelector(".trailer");
+          video.src = "./Christmas Tree.mp4";
+          btnDiscover.textContent = "DISCOVER TOP 2";
+          counter++;
+        } else if (counter == 2) {
+          title.textContent = "TOP 2";
+          let video = document.querySelector(".trailer");
+          video.src = "./BIBI.mp4";
+          btnDiscover.textContent = "BEST SCENE";
+          counter++;
+        } else if (counter == 3) {
+          title.textContent = " BEST SCENE";
+          let videoEle = document.querySelector(".trailer");
+          let container = document.querySelector(".container");
+          videoEle.parentNode.removeChild(videoEle);
+          let img = document.createElement("img");
+
+          let firstChildElement = document.querySelector(".title");
+          img.style.width = "90%";
+          img.style.height = "auto";
+          img.src = "./hug.jpg";
+          img.classList.add("poster");
+
+          firstChildElement.insertAdjacentElement("afterend", img);
+          btnDiscover.textContent = "WHY OUR BELOVED SUMMER?";
+          counter++;
+        } else if (counter == 4) {
+          title.textContent = "WHY OUR BELOVED SUMMER?";
+          let divEle = document.createElement("div");
+          divEle.classList.add("description");
+          let paragraph = document.createElement("p");
+          let img = document.querySelector(".poster");
+          paragraph.style.color = "red";
+          paragraph.style.fontSize = "18px";
+          paragraph.style.fontFamily = "Cerebri Sans";
+          paragraph.style.lineHeight = "30px";
+          paragraph.style.margin = "10px";
+          paragraph.style.padding = "28px";
+          paragraph.innerHTML = ` <em class="middle">"Sometimes you love someone,
+           but he doesn’t love you back. Other times you love someone who loves you back,
+           but it is just not the right time. Our Beloved Summer is about how love comes in different ways,
+           how loving someone can make you feel so vulnerable and how sometimes to love we need to learn to let go."<em>
+            </br>And yet despite everything, Love is still worth it.
+            </br>So, be brave, love and love💞, till no tomorrow.
+            </br>Make sure to watch Our Beloved Summer😎📺🍿!
+            You won't regret it 😉
+            </br><a class="link-color"
+          href="https://www.imdb.com/title/tt15026724/?ref_=tt_mv_close" target="_blank"
+          > <strong>See more</strong>
+        </a>
+        `;
+
+          img.parentNode.removeChild(img);
+          divEle.appendChild(paragraph);
+          let firstChildElement = document.querySelector(".title");
+          firstChildElement.insertAdjacentElement("afterend", divEle);
+
+          btnDiscover.textContent = "WATCH NOW";
+          counter++;
+        } else if (counter == 5) {
+          window.open(
+            "https://estrenosdoramas.io/capitulos/our-beloved-summer-1x1",
+            "_blank"
+          );
+          counter++;
+        } else {
+          window.open(
+            "https://estrenosdoramas.io/capitulos/our-beloved-summer-1x1",
+            "_blank"
+          );
+        }
+      });
+
+      const videoElement = document.getElementById("video");
+      const imgElement = document.createElement("img");
+
+      imgElement.src =
+        "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/115/373/original/loved.jpg?1707904188";
+      imgElement.alt =
+        "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/115/374/original/teaser.jpg?1707904233";
+      // Replace the video element with the image element
+      if (videoElement != null) {
+        videoElement.addEventListener("error", function () {
+          // Remove the video element
+          videoElement.parentNode.removeChild(videoElement);
+
+          // Append the img element in its place
+          videoElement.parentNode.appendChild(imgElement);
+        });
+      }
+    </script>
+  </body>
+</html>
